@@ -12,8 +12,8 @@
 
 #define MAX_INPIT_BUFFER_SIZE 200
 #define MAX_INPIT_BUFFER_SIZE_STRING "200"
-#define INPUT_STRING_FORMAT "%"MAX_INPIT_BUFFER_SIZE_STRING"s"
-#define INPUT_NUMBER_FORMAT "%u"
+#define INPUT_STRING_FORMAT "%" MAX_INPIT_BUFFER_SIZE_STRING "s"
+#define INPUT_NUMBER_FORMAT "%lu"
 const size_t MAX_NAME_SIZE = MAX_INPIT_BUFFER_SIZE;
 const size_t MAX_ROLE_SIZE = MAX_INPIT_BUFFER_SIZE;
 const size_t MAX_MEMBER_SIZE = 6;  // 6 - max, use:[0..6]
@@ -87,7 +87,7 @@ int main() {
 }
 
 void check_print(const char * string){
-    if (printf(string) < 0)
+    if (printf("%s", string) < 0)
         assert(false);
 }
 
@@ -97,62 +97,77 @@ void create_members(project_member *const members, const size_t membersSize){
         members[i].name = (char *)calloc(MAX_NAME_SIZE, sizeof(char));
         members[i].role = (char *)calloc(MAX_ROLE_SIZE, sizeof(char));
         switch (i) {
-        case 0:  // заказчик
-            members[i].name = "alex";
-            members[i].role = "employer";
+        case 0:
+            {  // заказчик
+            members[i].name = (char *)"alex";
+            members[i].role = (char *)"employer";
             members[i].work_with_project = false;
             members[i].use_project = false;
             members[i].influence = 10;
             members[i].finances_project = true;
             members[i].danger = false;
             break;
-        case 1: // покупатель
-            members[i].name = "dima";
-            members[i].role = "customer";
+            }
+        case 1:
+            { // покупатель
+            members[i].name = (char *)"dima";
+            members[i].role = (char *)"customer";
             members[i].work_with_project = false;
             members[i].use_project = true;
             members[i].influence = 6;
             members[i].finances_project = false;
             members[i].danger = false;
             break;
-        case 2:  //разработчик
-            members[i].name = "ann";
-            members[i].role = "developer";
+            }
+        case 2:
+            {  //разработчик
+            members[i].name = (char *)"ann";
+            members[i].role = (char *)"developer";
             members[i].work_with_project = true;
             members[i].use_project = true;
             members[i].influence = 5;
             members[i].finances_project = false;
             members[i].danger = false;
             break;
-        case 3:  // пиарщик
-            members[i].name = "vova";
-            members[i].role = "advertiser";
+            }
+        case 3:
+            {  // пиарщик
+            members[i].name = (char *)"vova";
+            members[i].role = (char *)"advertiser";
             members[i].work_with_project = false;
             members[i].use_project = false;
             members[i].influence = 6;
             members[i].finances_project = false;
             members[i].danger = false;
             break;
-        case 4:  //конкурент
-            members[i].name = "eva";
-            members[i].role = "opponent";
+            }
+        case 4:
+            {  //конкурент
+            members[i].name = (char *)"eva";
+            members[i].role = (char *)"opponent";
             members[i].work_with_project = false;
             members[i].use_project = false;
             members[i].influence = 5;
             members[i].finances_project = false;
             members[i].danger = true;
             break;
-        case 5:  //potential customer
-            members[i].name = "slava";
-            members[i].role = "PC";
+            }
+        case 5:
+            {  //potential customer
+            members[i].name = (char *)"slava";
+            members[i].role = (char *)"PC";
             members[i].work_with_project = false;
             members[i].use_project = false;
             members[i].influence = 0;
             members[i].finances_project = false;
             members[i].danger = false;
             break;
-        default: assert(false);
+            }
+        default:
+            { 
+            assert(false);
             break;
+            }
         }
     }
 }
@@ -213,6 +228,7 @@ bool set_parameters(project_member *const requirements, const size_t structField
         if (step >= structFieldCount) break;
         switch(step){
         case 0:
+            {
             check_print("Name:");
             if (check_strig_input(buffer)){
                 memcpy(requirements->name,buffer, MAX_INPUT_BUFFER);
@@ -224,7 +240,9 @@ bool set_parameters(project_member *const requirements, const size_t structField
                 continue;
             }
             break;
+            }
         case 1:
+            {
             check_print("Role:");
             if (check_strig_input(buffer)) {
                 memcpy(requirements->role,buffer, MAX_INPUT_BUFFER);
@@ -236,7 +254,9 @@ bool set_parameters(project_member *const requirements, const size_t structField
                 continue;
             }
             break;
+            }
         case 2:
+            {
             check_print("Work with project(yes//no):");
             if (check_bool_input(buffer)) {  // check input in fun
                 if (is_true(buffer)) {
@@ -254,7 +274,9 @@ bool set_parameters(project_member *const requirements, const size_t structField
                 continue;
             }
             break;
+            }
         case 3:
+            {
             check_print("Use project(yes//no):");
             if (check_bool_input(buffer)) {  // check input in fun
                 if (is_true(buffer)) {
@@ -272,7 +294,9 @@ bool set_parameters(project_member *const requirements, const size_t structField
                 continue;
             }
             break;
+            }
         case 4:
+            {
             check_print("Influence[0-15]:");
             size_t *const influenceNumber = (size_t*)malloc(sizeof(size_t));
             if (check_number_input(influenceNumber)) {
@@ -287,7 +311,9 @@ bool set_parameters(project_member *const requirements, const size_t structField
                 continue;
             }
             break;
+            }
         case 5:
+            {
             check_print("Finance(yes//no):");
             if (check_bool_input(buffer)) {  // check input in fun
                 if (is_true(buffer)) {
@@ -305,7 +331,9 @@ bool set_parameters(project_member *const requirements, const size_t structField
                 continue;
             }
             break;
+            }
         case 6:
+            {
             check_print("Danger(yes//no):");
             if (check_bool_input(buffer)) {  // check input in fun
                 if (is_true(buffer)) {
@@ -323,9 +351,12 @@ bool set_parameters(project_member *const requirements, const size_t structField
                 continue;
             }
             break;
+            }
         default:
+            {
             fflush(stdin);
             return false;
+            }
         }
     }
     free(buffer);
@@ -361,7 +392,7 @@ answer * create_answer(size_t maxMemberSize) {
     answer * ans =(answer*)malloc(sizeof(answer));
     ans->size = 0;
     ans->arr_matches_count = (size_t *) calloc(maxMemberSize, sizeof(size_t));
-    ans->arr_ptr =  calloc(maxMemberSize, sizeof(project_member *));
+    ans->arr_ptr = (project_member **) calloc(maxMemberSize, sizeof(project_member *));
     return ans;
 }
 
@@ -457,7 +488,7 @@ void showAns(answer* ans) {
                 check_print("No elements for your requirements\n");
             return;
         }
-        if(printf("Matched requirements:%d\nName:%s\nRole:%s\nWork with project:",
+        if(printf("Matched requirements:%lu\nName:%s\nRole:%s\nWork with project:",
                   ans->arr_matches_count[memberIter], ans->arr_ptr[memberIter]->name,
                   ans->arr_ptr[memberIter]->role) < 0)
             assert(false);

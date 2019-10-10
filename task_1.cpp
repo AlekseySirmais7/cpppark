@@ -99,8 +99,8 @@ void create_members(project_member *const members, const size_t membersSize){
         switch (i) {
         case 0:
             {  // заказчик
-            members[i].name = (char *)"alex";
-            members[i].role = (char *)"employer";
+            memcpy(members[i].name, "alex", 5);
+            memcpy(members[i].role, "employer", 9); 
             members[i].work_with_project = false;
             members[i].use_project = false;
             members[i].influence = 10;
@@ -110,8 +110,8 @@ void create_members(project_member *const members, const size_t membersSize){
             }
         case 1:
             { // покупатель
-            members[i].name = (char *)"dima";
-            members[i].role = (char *)"customer";
+            memcpy(members[i].name, "dima", 5);
+            memcpy(members[i].role, "customer", 9);  
             members[i].work_with_project = false;
             members[i].use_project = true;
             members[i].influence = 6;
@@ -121,8 +121,8 @@ void create_members(project_member *const members, const size_t membersSize){
             }
         case 2:
             {  //разработчик
-            members[i].name = (char *)"ann";
-            members[i].role = (char *)"developer";
+            memcpy(members[i].name, "ann", 4);  
+            memcpy(members[i].role, "developer", 10);  
             members[i].work_with_project = true;
             members[i].use_project = true;
             members[i].influence = 5;
@@ -132,8 +132,8 @@ void create_members(project_member *const members, const size_t membersSize){
             }
         case 3:
             {  // пиарщик
-            members[i].name = (char *)"vova";
-            members[i].role = (char *)"advertiser";
+            memcpy(members[i].name, "vova", 5); 
+            memcpy(members[i].role, "advertiser", 11);  
             members[i].work_with_project = false;
             members[i].use_project = false;
             members[i].influence = 6;
@@ -143,8 +143,8 @@ void create_members(project_member *const members, const size_t membersSize){
             }
         case 4:
             {  //конкурент
-            members[i].name = (char *)"eva";
-            members[i].role = (char *)"opponent";
+            memcpy(members[i].name, "eva", 4);  
+            memcpy(members[i].role, "opponent", 9);  
             members[i].work_with_project = false;
             members[i].use_project = false;
             members[i].influence = 5;
@@ -154,8 +154,8 @@ void create_members(project_member *const members, const size_t membersSize){
             }
         case 5:
             {  //potential customer
-            members[i].name = (char *)"slava";
-            members[i].role = (char *)"PC";
+            memcpy(members[i].name, "slava", 6);  
+            memcpy(members[i].role, "PC", 3);  
             members[i].work_with_project = false;
             members[i].use_project = false;
             members[i].influence = 0;
@@ -173,7 +173,7 @@ void create_members(project_member *const members, const size_t membersSize){
 }
 
 void free_members(project_member *const members, const size_t membersSize) {
-    for (size_t i = 0; i<membersSize; i++) {
+    for (size_t i = 0; i < membersSize; i++) {
         free(members[i].name);
         free(members[i].role);
     }
@@ -257,7 +257,7 @@ bool set_parameters(project_member *const requirements, const size_t structField
             }
         case 2:
             {
-            check_print("Work with project(yes//no):");
+            check_print("Work with project(yes/no):");
             if (check_bool_input(buffer)) {  // check input in fun
                 if (is_true(buffer)) {
                     requirements->work_with_project = true;
@@ -270,14 +270,14 @@ bool set_parameters(project_member *const requirements, const size_t structField
             }
             else {
                 fflush(stdin);
-                check_print("Bad (yes//no) input, try one more time\n");
+                check_print("Bad (yes/no) input, try one more time\n");
                 continue;
             }
             break;
             }
         case 3:
             {
-            check_print("Use project(yes//no):");
+            check_print("Use project(yes/no):");
             if (check_bool_input(buffer)) {  // check input in fun
                 if (is_true(buffer)) {
                     requirements->use_project = true;
@@ -290,7 +290,7 @@ bool set_parameters(project_member *const requirements, const size_t structField
             }
             else {
                 fflush(stdin);
-                check_print("Bad (yes//no) input, try one more time\n");
+                check_print("Bad (yes/no) input, try one more time\n");
                 continue;
             }
             break;
@@ -314,7 +314,7 @@ bool set_parameters(project_member *const requirements, const size_t structField
             }
         case 5:
             {
-            check_print("Finance(yes//no):");
+            check_print("Finance(yes/no):");
             if (check_bool_input(buffer)) {  // check input in fun
                 if (is_true(buffer)) {
                     requirements->finances_project = true;
@@ -327,14 +327,14 @@ bool set_parameters(project_member *const requirements, const size_t structField
             }
             else {
                 fflush(stdin);
-                check_print("Bad (yes//no) input, try one more time\n");
+                check_print("Bad (yes/no) input, try one more time\n");
                 continue;
             }
             break;
             }
         case 6:
             {
-            check_print("Danger(yes//no):");
+            check_print("Danger(yes/no):");
             if (check_bool_input(buffer)) {  // check input in fun
                 if (is_true(buffer)) {
                     requirements->danger = true;
@@ -347,7 +347,7 @@ bool set_parameters(project_member *const requirements, const size_t structField
             }
             else {
                 fflush(stdin);
-                check_print("Bad (yes//no) input, try one more time\n");
+                check_print("Bad (yes/no) input, try one more time\n");
                 continue;
             }
             break;

@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/alex/park/cpp/1_1/cpppark/main.cpp
+stdio.h
+-
+stdbool.h
+-
+stdlib.h
+-
+assert.h
+-
+string.h
+-
+

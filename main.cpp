@@ -153,7 +153,7 @@ void create_members(project_member *const members, const size_t membersSize){
             break;
             }
         case 5:
-            {  //potential customer
+            {  //potential customer (PC)
             memcpy(members[i].name, "slava", 6);  
             memcpy(members[i].role, "PC", 3);  
             members[i].work_with_project = false;

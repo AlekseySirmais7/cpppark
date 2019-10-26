@@ -1,3 +1,0 @@
-/home/alex/park/cpp/1_1/cpppark/temp/CMakeFiles/rebuild_cache.dir
-/home/alex/park/cpp/1_1/cpppark/temp/CMakeFiles/main.dir
-/home/alex/park/cpp/1_1/cpppark/temp/CMakeFiles/edit_cache.dir
